@@ -1,0 +1,20 @@
+﻿@model DickinsDev.RblMonitor.WebUI.Models.Home.IndexModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to RBL Monitoring</h1>
+    <p>
+        This service will automatically check RBL lists for occurances of IP Addresses. When a change has been detected 
+        an email alert will be sent to all Email Targets with the details of the change. To quickly check the status of
+        an IP Address, type it in below.
+    </p>
+</div>
+@using (Html.BeginForm("QuickCheck", "Home"))
+{
+    @Html.LabelFor(m=>m.IPAddress)
+    @Html.TextBoxFor(m=>m.IPAddress, null, new { @class="form-control" })
+    @Html.ValidationMessageFor(m=>m.IPAddress)
+    <button class="btn btn-success" type="submit">Check IP</button>
+}

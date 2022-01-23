@@ -1,0 +1,68 @@
+﻿@model IEnumerable<DickinsDev.RblMonitor.Data.Models.IPMonitor>
+
+@{
+    ViewData["Title"] = "IP Monitors";
+}
+
+<h1>IP Monitors</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IPName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IPAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastCheck)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckInterval)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isClean)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IPName)
+                </td>
+                <td>
+                    <a href="/Home/Check/@item.IPAddress">
+                        @Html.DisplayFor(modelItem => item.IPAddress)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastCheck)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckInterval)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isClean)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Guid">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Guid">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Guid">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

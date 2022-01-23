@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DickinsDev.RblMonitor.Data.Models.Nameserver>
+
+@{
+    ViewData["Title"] = "Name Servers";
+}
+
+<h1>Name Servers</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ServerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IPAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IPAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isActive)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Guid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Guid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Guid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
