@@ -47,7 +47,9 @@ namespace DickinsDev.RblMonitor.WebUI.Controllers
             smtpMessage.Subject = $"IP Address '{IPAddress}' status has changed.";
             smtpMessage.Body = $"The IP Address '{IPAddress}' has changed state.\r\n" +
                 $"Is the address clean? {dnsCheckResult.isClean}\r\n" +
-                $"How many RBL's does the address appear on: {dnsCheckResult.RBLChecks.Count}";
+                $"How many RBL's does the address appear on: {dnsCheckResult.RBLChecks.Where(c=>!c.isClean).Count()}";
+            smtpMessage.isHtml = false;
+
             try
             {
 

@@ -14,7 +14,8 @@ namespace DickinsDev.RblMonitor.WebUI.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly Data.DataContext _context;
 
-        public HomeController(ILogger<HomeController> logger, Data.DataContext context)
+
+        public HomeController(ILogger<HomeController> logger, Data.DataContext context, Utilities.Smtp.ISmtpClient smtpClient)
         {
             _logger = logger;
             _context = context;
